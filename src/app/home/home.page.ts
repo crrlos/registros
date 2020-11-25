@@ -7,6 +7,9 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  fechaActual = new Date().toISOString();
+
+  constructor() {
+  }
 
 }
