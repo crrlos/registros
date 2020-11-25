@@ -11,6 +11,8 @@ export class LoginPage {
   private correo : string;
   private password : string;
 
+  private errores = [false,false];
+
  private ocultarLogin = false;
 
   constructor(private router : Router) { 
@@ -20,10 +22,17 @@ export class LoginPage {
   }
 
   async login(){
+    let context = this;
+
+    this.errores = [false,false]
 
     let user =  await firebase.auth().signInWithEmailAndPassword(this.correo.trim(), this.password.trim())
     .catch(function(error) {
-      console.log(error)
+      if(['auth/invalid-email','auth/user-not-found'].includes(error.code)){
+        context.errores[0] = true;
+      }
+      if(error.code === 'auth/wrong-password')
+        context.errores[1] = true;
     }); 
 
     if(user){
