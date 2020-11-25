@@ -1,0 +1,21 @@
+<div *ngIf="!ocultarLogin">
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+     
+    
+      <!-- Login Form -->
+      <form style="margin-top: 10px;">
+        <input type="text" id="login" class="fadeIn second" name="login" placeholder="correo" [(ngModel)]="correo">
+        <input type="text" id="password" class="fadeIn third" name="login" placeholder="contraseña" [(ngModel)]="password">
+        <input type="button" (click)="login()" class="fadeIn fourth" value="Entrar">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="#">olvidó su contraseña?</a>
+      </div>
+  
+    </div>
+  </div>
+</div>

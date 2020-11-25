@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+declare const firebase : any;
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -10,6 +10,7 @@ export class HomePage {
   fechaActual = new Date().toISOString();
 
   constructor() {
+
   }
 
 }

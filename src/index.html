@@ -19,10 +19,36 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/8.1.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+<script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyCYiuZcJeNNRdMEaZP3NL80caFH0E5WfTo",
+    authDomain: "registroingresos-f7130.firebaseapp.com",
+    databaseURL: "https://registroingresos-f7130.firebaseio.com",
+    projectId: "registroingresos-f7130",
+    storageBucket: "registroingresos-f7130.appspot.com",
+    messagingSenderId: "268978210855",
+    appId: "1:268978210855:web:628691904e69963cb0e602"
+  };
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  var currentUser = firebase.auth().currentUser;
+</script>
 </head>
 
 <body>
   <app-root></app-root>
+
+
 </body>
 
 </html>
