@@ -24,20 +24,23 @@
   </ion-item>
     <ion-item>
       <ion-label position="floating">Parqueadero</ion-label>
-      <ion-input clearInput="true"></ion-input>
+      <ion-input clearInput="true" type="number" [(ngModel)]="registro.parqueadero"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label position="floating">Licores</ion-label>
-      <ion-input clearInput="true" pattern="[0-9]+"></ion-input>
+      <ion-input clearInput="true" type="number" pattern="[0-9]+" [(ngModel)]="registro.licores"></ion-input>
     </ion-item>
   
     <ion-item>
       <ion-label position="floating">Plataforma recargas</ion-label>
-      <ion-input clearInput="true"></ion-input>
+      <ion-input clearInput="true" type="number" [(ngModel)]="registro.plataformaRecarga"></ion-input>
     </ion-item>
   
-    <ion-button color="primary">Guardar </ion-button>
+    <div>
+      <ion-button color="primary" (click)="guardar()">Guardar </ion-button>
+      <ion-spinner *ngIf="guardando" name="lines-small"></ion-spinner>
+    </div>
   </div>
 
 </ion-content>

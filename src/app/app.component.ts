@@ -6,7 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router } from '@angular/router';
 
 declare const firebase: any;
-declare const currentUser : any;
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -38,7 +38,6 @@ export class AppComponent {
 
   revisarAuth(){
 
-    console.log(currentUser);
     let thisContext = this;
     firebase.auth().onAuthStateChanged(function(user) {
       if (user) {
