@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  
+    <div class="center" style="text-align: center;">
+
+      <div style="cursor: pointer;" *ngIf="admin" (click)="consultarIngresos()">
+        <img src="{{consultar}}" style="border-radius: 50%;" width="130px">
+        <h4>Consultar ingresos</h4>
+      </div>
+
+      <div style="cursor: pointer;" (click)="registrarIngresos()" > 
+        <img src="{{registrar}}" style="border-radius: 50%;" width="130px">
+        <h4>Registrar ingresos</h4>
+      </div>
+      <div style="cursor: pointer;" (click)="cerrarSesion()">
+        <img src="{{salir}}" style="border-radius: 50%;" width="130px">
+        <h4>Cerrar sesión</h4>
+      </div>
+    </div>
+
+ 
+
+</ion-content>

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { promise } from 'protractor';
 declare const firebase : any;
+declare const db : any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -17,7 +19,7 @@ export class LoginPage {
 
   constructor(private router : Router) { 
     if(window.localStorage.getItem("auth"))
-      this.router.navigate(['/home']);
+      this.router.navigate(['/principal']);
       else this.ocultarLogin = false;
   }
 
@@ -36,10 +38,35 @@ export class LoginPage {
     }); 
 
     if(user){
-      console.log(user);
+      window.localStorage.setItem("uid", user.user.uid);
       window.localStorage.setItem("auth","true");
-      console.log('logueado');
-      this.router.navigate(['/home']);
+
+
+      var docRef = db.collection("usuarios").doc("admin");
+
+      let promesa = new Promise((resolve, reject) => {
+
+        docRef.get().then(function(doc) {
+          if (doc.exists) {
+              resolve(doc.data().uid);
+          } else {
+              // doc.data() will be undefined in this case
+              resolve(null);
+          }
+      }).catch(function(error) {
+          console.log("Error getting document:", error);
+      });
+
+      });
+
+      let result : any = await promesa;
+      
+      if(result){
+        window.localStorage.setItem("tkrs_",result);
+      }
+      
+      
+      this.router.navigate(['/principal']);
     }
     
   }

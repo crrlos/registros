@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
 declare const db : any;
 
 @Component({
@@ -17,13 +19,17 @@ export class ConsultaPage implements OnInit {
 
   datos: any = [];
 
-  constructor() { 
+  constructor(private router : Router, private nav : NavController) { 
     let date = new Date();
     this.fechaFin = date.toISOString();
 
     date.setDate(date.getDate() - 30);
 
     this.fechaInicio = date.toISOString();
+
+    let res  = window.localStorage.getItem('uid') == window.localStorage.getItem('tkrs_');
+    if(!res){
+      this.router.navigate(['/home']);}
   }
 
   ngOnInit() {
@@ -62,9 +68,9 @@ db.collection("registros")
           d.licores  *= 1;
           d.plataformaRecarga  *= 1;
 
-          context.totalParqueadero += d.parqueadero * 1;
-          context.totalLicores += d.licores * 1;
-          context.totalPlataformaRecarga += d.plataformaRecarga * 1;
+          context.totalParqueadero += d.parqueadero  ?? 0;
+          context.totalLicores += d.licores  ?? 0;
+          context.totalPlataformaRecarga += d.plataformaRecarga ?? 0;
         });
     })
     .catch(function(error) {

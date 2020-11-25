@@ -26,6 +26,16 @@ export class HomePage {
 
   async guardar(){
 
+    if(!this.registro['licores']){
+        this.registro['licores'] = 0;
+    }
+    if(!this.registro['parqueadero']){
+      this.registro['parqueadero'] = 0;
+  }
+  if(!this.registro['plataformaRecarga']){
+    this.registro['plataformaRecarga'] = 0;
+}
+
     let promise =  new Promise((resolve, reject)=>{
       db.collection("registros").where("fecha", "==", this.getDocumentKey())
     .limit(1)

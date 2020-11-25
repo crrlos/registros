@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConsultaGuardGuard } from '../consulta-guard.guard';
 
-import { ConsultaPage } from './consulta.page';
+import { PrincipalPage } from './principal.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: ConsultaPage,
-    canActivate: [ConsultaGuardGuard]
+    component: PrincipalPage
   }
 ];
 
@@ -16,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class ConsultaPageRoutingModule {}
+export class PrincipalPageRoutingModule {}
