@@ -30,6 +30,11 @@ export class ConsultaPage implements OnInit {
 
     
   }
+  ngAfterViewInit(){
+    if(screen.width <= 768){
+      document.getElementById('consultaDiv').classList.remove('center');
+    }
+  }
 
   consultar(){
 let context = this;

@@ -14,13 +14,20 @@ export class HomePage {
     
 
   }
+  ngAfterViewInit(){
+    if(screen.width <= 768){
+      document.getElementById('homeDiv').classList.remove('center');
+    }
+  }
 
-  constructor(public toastController: ToastController) {}
+  constructor(public toastController: ToastController) {
+   
+  }
 
   async guardar(){
 
     let promise =  new Promise((resolve, reject)=>{
-      db.collection("registros").where("fecha", "==", "20201125")
+      db.collection("registros").where("fecha", "==", this.getDocumentKey())
     .limit(1)
     .get()
     .then(function(querySnapshot) {

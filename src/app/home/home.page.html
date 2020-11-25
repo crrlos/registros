@@ -8,38 +8,40 @@
 
 <ion-content [fullscreen]="false">
   
-  <div>
-    <ion-item>
-      <ion-label>Fecha:</ion-label>
-    <ion-datetime 
-    cancel-text="Cancelar"
-    done-text="Aceptar"
-    month-short-names="[Ene, Feb, Mar, Abr, May, Jun, Jul,Ago,Sep,Oct,Nov,Dic ]"
-    [(ngModel)] ="fechaActual"
-    ></ion-datetime>
-    </ion-item>
-  
-  <ion-item lines="none">
-    <h2>Ingresos del día</h2>
-  </ion-item>
-    <ion-item>
-      <ion-label position="floating">Parqueadero</ion-label>
-      <ion-input clearInput="true" type="number" [(ngModel)]="registro.parqueadero"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label position="floating">Licores</ion-label>
-      <ion-input clearInput="true" type="number" pattern="[0-9]+" [(ngModel)]="registro.licores"></ion-input>
-    </ion-item>
-  
-    <ion-item>
-      <ion-label position="floating">Plataforma recargas</ion-label>
-      <ion-input clearInput="true" type="number" [(ngModel)]="registro.plataformaRecarga"></ion-input>
-    </ion-item>
-  
+  <div id="homeDiv" class="center">
     <div>
-      <ion-button color="primary" (click)="guardar()">Guardar </ion-button>
-      <ion-spinner *ngIf="guardando" name="lines-small"></ion-spinner>
+      <ion-item>
+        <ion-label>Fecha:</ion-label>
+      <ion-datetime 
+      cancel-text="Cancelar"
+      done-text="Aceptar"
+      month-short-names="[Ene, Feb, Mar, Abr, May, Jun, Jul,Ago,Sep,Oct,Nov,Dic ]"
+      [(ngModel)] ="fechaActual"
+      ></ion-datetime>
+      </ion-item>
+    
+    <ion-item lines="none">
+      <h2>Ingresos del día</h2>
+    </ion-item>
+      <ion-item>
+        <ion-label position="floating">Parqueadero</ion-label>
+        <ion-input clearInput="true" type="number" [(ngModel)]="registro.parqueadero"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Licores</ion-label>
+        <ion-input clearInput="true" type="number" pattern="[0-9]+" [(ngModel)]="registro.licores"></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label position="floating">Plataforma recargas</ion-label>
+        <ion-input clearInput="true" type="number" [(ngModel)]="registro.plataformaRecarga"></ion-input>
+      </ion-item>
+    
+      <div>
+        <ion-button color="primary" (click)="guardar()">Guardar </ion-button>
+        <ion-spinner *ngIf="guardando" name="lines-small"></ion-spinner>
+      </div>
     </div>
   </div>
 
