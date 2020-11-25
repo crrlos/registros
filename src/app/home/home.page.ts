@@ -21,9 +21,11 @@ export class HomePage {
 
     this.guardando = true;
     let  context = this;
+
+    this.registro['fecha'] = this.getDocumentKey();
+
     db.collection("registros")
-      .doc(this.getDocumentKey())
-      .set(this.registro)
+      .add(this.registro)
     .then(function() {
       context.showConfirmation('Registros guardados.');
       context.guardando = false;
@@ -38,7 +40,7 @@ export class HomePage {
   
 
   getDocumentKey() : string{
-    let fecha : any = new Date().toISOString().split('T')[0];
+    let fecha : any = this.fechaActual.split('T')[0];
     // returns YYYYMMDD
     return fecha.replaceAll('-','')
   }

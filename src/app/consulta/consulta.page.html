@@ -1,0 +1,72 @@
+<ion-header>
+  
+</ion-header>
+
+<ion-content>
+
+  <ion-item>
+    <ion-label>Fecha inicio:</ion-label>
+  <ion-datetime 
+  [(ngModel)] = "fechaInicio"
+  cancel-text="Cancelar"
+  done-text="Aceptar"
+  month-short-names="[Ene, Feb, Mar, Abr, May, Jun, Jul,Ago,Sep,Oct,Nov,Dic ]"
+  value="{{fechaActual}}"
+  ></ion-datetime>
+  </ion-item>
+  <ion-item>
+    <ion-label>Fecha final:</ion-label>
+  <ion-datetime 
+  [(ngModel)] = "fechaFin"
+  cancel-text="Cancelar"
+  done-text="Aceptar"
+  month-short-names="[Ene, Feb, Mar, Abr, May, Jun, Jul,Ago,Sep,Oct,Nov,Dic ]"
+  value="{{fechaActual}}"
+  ></ion-datetime>
+  </ion-item>
+
+  <ion-button (click)="consultar()">Consultar</ion-button>
+ 
+  <div id="consulta">
+
+    <h3>Resumen</h3>
+    
+  <table border="1">
+    <tr>
+      <th>Parqueadero</th>
+      <th>Licores</th>
+      <th>Plataforma recarga</th>
+    </tr>
+    <tr>
+      <td>{{ totalParqueadero | currency }}</td>
+      <td>{{ totalLicores | currency }}</td>
+      <td>{{ totalPlataformaRecarga | currency }}</td>
+     
+    </tr>
+  </table>
+
+  <h3>
+    Detalle
+  </h3>
+<table border="1">
+  <tr>
+    <th>Fecha</th>
+    <th>Parqueadero</th>
+    <th>Licores</th>
+    <th>Plataforma recarga</th>
+  </tr>
+  <tr *ngFor="let d of datos">
+    
+    <td>{{d.fecha}}</td>
+    <td>{{d.parqueadero | currency}}</td>
+    <td>{{d.licores | currency}}</td>
+    <td>{{d.plataformaRecarga | currency}}</td>
+  </tr>
+</table>
+
+
+  </div>
+  
+
+</ion-content>
+

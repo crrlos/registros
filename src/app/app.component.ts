@@ -31,23 +31,7 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
-      this.revisarAuth();
-    });
-  }
-
-  revisarAuth(){
-
-    let thisContext = this;
-    firebase.auth().onAuthStateChanged(function(user) {
-      if (user) {
-        this.user = true;
-       thisContext.router.navigate(['/home']);
-       
-       console.log(this.user);
-      } else {
-        // No user is signed in.
-      }
+      this.splashScreen.hide(); 
     });
   }
 
