@@ -1,23 +1,29 @@
-<div *ngIf="!ocultarLogin">
-  <div class="wrapper fadeInDown">
-    <div id="formContent">
-      <!-- Tabs Titles -->
-     
+<ion-header>
+
+</ion-header>
+
+<ion-content>
+  <div *ngIf="!ocultarLogin">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+       
+      
+        <!-- Login Form -->
+        <form style="margin-top: 10px;">
+          <input type="text" id="login" class="fadeIn second" name="login" placeholder="correo" [(ngModel)]="correo">
+          <div *ngIf="errores[0]"><small>Usuario incorrecto</small></div>
+          <input type="password" id="password" class="fadeIn third" name="login" placeholder="contraseña" [(ngModel)]="password">
+          <div *ngIf="errores[1]"><small>Contraseña incorrecta</small></div>
+          <input type="button" (click)="login()" class="fadeIn fourth" value="Entrar">
+        </form>
     
-      <!-- Login Form -->
-      <form style="margin-top: 10px;">
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="correo" [(ngModel)]="correo">
-        <div *ngIf="errores[0]"><small>Usuario incorrecto</small></div>
-        <input type="password" id="password" class="fadeIn third" name="login" placeholder="contraseña" [(ngModel)]="password">
-        <div *ngIf="errores[1]"><small>Contraseña incorrecta</small></div>
-        <input type="button" (click)="login()" class="fadeIn fourth" value="Entrar">
-      </form>
-  
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="#">Olvidó su contraseña?</a>
+        <!-- Remind Passowrd -->
+        <div id="formFooter">
+          <a class="underlineHover" [routerLink]="['/recuperar-clave']">Olvidó su contraseña?</a>
+        </div>
+    
       </div>
-  
     </div>
   </div>
-</div>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Recuperar contraseña</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h3>Ingrese su correo</h3>
+    
+      <!-- Login Form -->
+      <form style="margin-top: 10px;">
+        <input type="text" #correo id="login" class="fadeIn second" name="login" placeholder="correo" >
+        <div *ngIf="error"><small style="color: red;">Correo incorrecto, intente de nuevo</small></div>
+        <div *ngIf="enviado"><small style="color: green;">Correo de recuperación enviado, revise su buzón de entrada</small></div>
+      
+        <input type="button" (click)="recuperar(correo.value)" class="fadeIn fourth" value="Enviar enlace">
+      </form>
+  
+     
+  
+    </div>
+  </div>
+
+</ion-content>

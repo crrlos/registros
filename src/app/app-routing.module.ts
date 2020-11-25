@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: () => import('./consulta/consulta.module').then( m => m.ConsultaPageModule)
   },
   {
+    path: 'recuperar-clave',
+    loadChildren: () => import('./recuperar-clave/recuperar-clave.module').then( m => m.RecuperarClavePageModule)
+  },
+  {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   },
