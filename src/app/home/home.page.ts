@@ -17,16 +17,44 @@ export class HomePage {
 
   constructor(public toastController: ToastController) {}
 
-  guardar(){
+  async guardar(){
+
+    let promise =  new Promise((resolve, reject)=>{
+      db.collection("registros").where("fecha", "==", "20201125")
+    .limit(1)
+    .get()
+    .then(function(querySnapshot) {
+      querySnapshot.forEach(function(doc){
+        resolve({
+          id : doc.id,
+          empty : false
+        });
+      });
+
+      resolve({
+        empty : true
+      });
+
+    })
+    .catch(function(error) {
+        console.log("Error getting documents: ", error);
+    });
+    });
+
+    let result : any = await promise;
+    console.log(result);
+    
 
     this.guardando = true;
     let  context = this;
 
     this.registro['fecha'] = this.getDocumentKey();
 
-    db.collection("registros")
+
+    if(result.empty){
+      db.collection("registros")
       .add(this.registro)
-    .then(function() {
+      .then(function() {
       context.showConfirmation('Registros guardados.');
       context.guardando = false;
     })
@@ -34,6 +62,23 @@ export class HomePage {
       context.showConfirmation('Se produjo un error. Intente de nuevo.');
       
     });
+    }else{
+
+      db.collection("registros")
+      .doc(result.id)
+      .set(this.registro)
+      .then(function() {
+      context.showConfirmation('Registros guardados.');
+      context.guardando = false;
+    })
+    .catch(function(error) {
+      context.showConfirmation('Se produjo un error. Intente de nuevo.');
+      
+    });
+
+    }
+
+    
     
   }
 

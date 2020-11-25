@@ -44,13 +44,22 @@ db.collection("registros")
             data.fecha = data.fecha.substring(6,8)+'/'+data.fecha.substring(4,6) + '/' + data.fecha.substring(0,4);
             context.datos.push(data);
         });
+
+        
+
         context.totalParqueadero = 0;
         context.totalLicores = 0;
         context.totalPlataformaRecarga = 0;
+
         context.datos.forEach(d => {
-          context.totalParqueadero += d.parqueadero;
-          context.totalLicores += d.licores;
-          context.totalPlataformaRecarga += d.plataformaRecarga;
+
+          d.parqueadero  *= 1;
+          d.licores  *= 1;
+          d.plataformaRecarga  *= 1;
+
+          context.totalParqueadero += d.parqueadero * 1;
+          context.totalLicores += d.licores * 1;
+          context.totalPlataformaRecarga += d.plataformaRecarga * 1;
         });
     })
     .catch(function(error) {
