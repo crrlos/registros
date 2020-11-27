@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { imagenConsultar, imagenRegistrar, imagenSalir } from 'src/environments/environment'
 
-declare const firebase : any;
+declare const firebase: any;
 @Component({
   selector: 'app-principal',
   templateUrl: './principal.page.html',
@@ -17,26 +17,37 @@ export class PrincipalPage implements OnInit {
   admin = false;
 
   constructor(private router: Router) {
-    this.admin = window.localStorage.getItem('uid') == window.localStorage.getItem('tkrs_')
-   }
 
-  ngOnInit() {
+    if(window.localStorage.getItem('uid') && window.localStorage.getItem('tkrs_')){
+      this.admin = window.localStorage.getItem('uid') == window.localStorage.getItem('tkrs_')
+    }
 
+  
     
   }
 
-  cerrarSesion(){
-      window.localStorage.clear();
-      firebase.auth().signOut();
-      this.router.navigate(['/login'])
+  ngOnInit() {
+  
+
   }
-  consultarIngresos(){
-  
+
+  cerrarSesion() {
+
+    window.localStorage.clear()
+
+    firebase
+      .auth()
+      .signOut()
+      .then(() => this.router.navigate(['/login']))
+
+  }
+  consultarIngresos() {
+
     this.router.navigate(['/consulta'])
-}
-registrarIngresos(){
-  
-  this.router.navigate(['/home'])
-}
+  }
+  registrarIngresos() {
+
+    this.router.navigate(['/home'])
+  }
 
 }

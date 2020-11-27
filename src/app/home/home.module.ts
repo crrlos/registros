@@ -17,10 +17,4 @@ import { Router } from '@angular/router';
   ],
   declarations: [HomePage]
 })
-export class HomePageModule {
-  constructor(private router : Router){
-    if(!window.localStorage.getItem("auth"))
-      this.router.navigate(['/login']);
-      
-  }
-}
+export class HomePageModule {}
