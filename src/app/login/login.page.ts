@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { promise } from 'protractor';
+import { AuthService } from '../auth.service';
 declare const firebase: any;
 declare const db: any;
 @Component({
@@ -14,6 +15,8 @@ export class LoginPage {
    password: string;
 
    errores = [false, false];
+
+   constructor(private authService : AuthService, private router: Router){}
 
   async login() {
     let context = this;
@@ -34,6 +37,10 @@ export class LoginPage {
     if (user) {
       window.localStorage.setItem("uid", user.user.uid);
       await this.getAdminUID();
+      this.authService.setAuthenticated(true);
+
+    
+      this.router.navigate(['/principal']);
     }
 
   }

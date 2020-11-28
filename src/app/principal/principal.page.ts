@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { imagenConsultar, imagenRegistrar, imagenSalir } from 'src/environments/environment'
+import { AuthService } from '../auth.service';
 
 declare const firebase: any;
 @Component({
@@ -16,7 +17,7 @@ export class PrincipalPage implements OnInit {
 
   admin = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authService: AuthService) {
 
     if(window.localStorage.getItem('uid') && window.localStorage.getItem('tkrs_')){
       this.admin = window.localStorage.getItem('uid') == window.localStorage.getItem('tkrs_')
@@ -38,7 +39,11 @@ export class PrincipalPage implements OnInit {
     firebase
       .auth()
       .signOut()
-      .then(() => this.router.navigate(['/login']))
+      .then(
+        () => {
+          this.authService.setAuthenticated(false);
+          this.router.navigate(['/login'])
+      })
 
   }
   consultarIngresos() {
