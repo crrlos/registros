@@ -37,10 +37,11 @@ export class HomePage {
     let respuesta: any;
 
     if (registroDelDia.empty) {
-      respuesta = db.collection("registros").add(this.registro)
+      console.log(this.registro)
+      respuesta = db.collection("registros").add({...this.registro})
 
     } else {
-      respuesta = db.collection("registros").doc(registroDelDia.id).set(this.registro)
+      respuesta = db.collection("registros").doc(registroDelDia.id).set({...this.registro})
 
     }
 

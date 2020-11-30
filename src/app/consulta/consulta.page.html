@@ -33,39 +33,49 @@
    
     <div id="consulta">
   
-      <h3>Resumen</h3>
+      <h4>Resumen</h4>
       
-    <table border="1">
-      <tr>
-        <th>Parqueadero</th>
-        <th>Licores</th>
-        <th>Plataforma recarga</th>
-      </tr>
-      <tr>
-        <td>{{ totalParqueadero | currency }}</td>
-        <td>{{ totalLicores | currency }}</td>
-        <td>{{ totalPlataformaRecarga | currency }}</td>
-       
-      </tr>
+    <table class="striped">
+      <thead>
+        <tr>
+          <th style="text-align: right; color:transparent">Fecha</th>
+          <th style="text-align: right;">Parqueadero</th>
+          <th style="text-align: right;">Licores</th>
+          <th style="text-align: right;">Plataforma recarga</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="text-align: right; color:transparent; background-color: white;">{{ totalParqueadero | currency }}</td>
+          <td style="text-align: right;">{{ totalParqueadero | currency }}</td>
+          <td style="text-align: right;">{{ totalLicores | currency }}</td>
+          <td style="text-align: right;">{{ totalPlataformaRecarga | currency }}</td>
+         
+        </tr>
+      </tbody>
     </table>
   
-    <h3>
+    <h4>
       Detalle
-    </h3>
-  <table border="1">
-    <tr>
-      <th>Fecha</th>
-      <th>Parqueadero</th>
-      <th>Licores</th>
-      <th>Plataforma recarga</th>
-    </tr>
-    <tr *ngFor="let d of datos">
+    </h4>
+  <table class="striped">
+    <thead>
+      <tr>
+        <th style="text-align: right;">Fecha</th>
+        <th style="text-align: right;">Parqueadero</th>
+        <th style="text-align: right;">Licores</th>
+        <th style="text-align: right;">Plataforma recarga</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of datos">
       
-      <td>{{d.fecha}}</td>
-      <td>{{d.parqueadero | currency}}</td>
-      <td>{{d.licores | currency}}</td>
-      <td>{{d.plataformaRecarga | currency}}</td>
-    </tr>
+        <td style="text-align: right;">{{d.fecha}}</td>
+        <td style="text-align: right;">{{d.parqueadero | currency}}</td>
+        <td style="text-align: right;">{{d.licores | currency}}</td>
+        <td style="text-align: right;">{{d.plataformaRecarga | currency}}</td>
+      </tr>
+    </tbody>
   </table>
   
   
